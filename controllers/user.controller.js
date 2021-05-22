@@ -2,9 +2,8 @@ const config = require("config");
 const User = require("../model/Users");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
-console.log(process.env.NODE_ENV)
-const secretOrKey = config.get("secretOrKey");
-console.log(secretOrKey)
+
+
 exports.addTelegramCredentials = async (req, res) => {
   const { name, familyName, TelegramID, telegramAuthDate } = req.body;
   try {
@@ -14,7 +13,7 @@ exports.addTelegramCredentials = async (req, res) => {
         _id: searchResult._id,
         TelegramID: searchResult.TelegramID,
       };
-      const token = await jwt.sign(payload, secretOrKey);
+      const token = await jwt.sign(payload, process.env.secretOrKey);
       return res.status(200).json({ token: `Bearer ${token}` });
     }
     const newUser = new User({
@@ -29,7 +28,7 @@ exports.addTelegramCredentials = async (req, res) => {
       _id: addedUser._id,
       TelegramID: addedUser.TelegramID,
     };
-    const token = await jwt.sign(payload, secretOrKey);
+    const token = await jwt.sign(payload, process.env.secretOrKey);
     return res.status(200).json({ token: `Bearer ${token}` });
   } catch (error) {
     res.status(500).json({ errors: error });
@@ -62,7 +61,7 @@ exports.saveData = async (req, res) => {
       _id: updated._id,
       TelegramID: updated.TelegramID,
     };
-    const token = await jwt.sign(payload, secretOrKey);
+    const token = await jwt.sign(payload, process.env.secretOrKey);
     return res.status(200).json({ token: `Bearer ${token}` });
   } catch (error) {
     res.status(500).json({ errors: error });
