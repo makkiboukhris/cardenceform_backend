@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const config = require("config");
 
-const mongoUri = config.get("mongoURI");
+const mongoURI = config.get("mongoURI");
 module.exports = () =>
   mongoose.connect(
     process.env.mongoURI,
