@@ -14,7 +14,7 @@ dbConnect();
 
 app.use('/users', router);
 
-const PORT =   4000 || process.env.PORT;
+const PORT =   process.env.PORT || 4000;
   
 app.listen(4000, (err) =>
   err ? console.error(err) : console.log(`connection on port ${PORT}`)
