@@ -3,7 +3,8 @@ const ExtractJwt = require('passport-jwt').ExtractJwt;
 const passport = require('passport');
 const config = require('config');
 const User = require('../model/Users');
-const secretOrKey = config.get('secretOrKey');
+const secretOrKey = process.env.secretOrKey;
+console.log(process.env)
 const opts = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   secretOrKey,

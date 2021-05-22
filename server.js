@@ -1,11 +1,12 @@
 const express = require('express');
 const dbConnect = require('./config/dbConnect');
-const router = require('./routes/users');
 const dotenv = require('dotenv')
+dotenv.config({ path: "./config/config.env" });
+const router = require('./routes/users');
+
 const app = express();
 
 // Load env vars
-dotenv.config({ path: "./config/config.env" });
 console.log(process.env)
 // connect to db
 dbConnect();
