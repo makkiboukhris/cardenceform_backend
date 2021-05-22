@@ -2,8 +2,8 @@ const config = require("config");
 const User = require("../model/Users");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
-const secretOrKey = config.get("secretOrKey");
-
+const secretOrKey = process.env.secretOrKey  || config.get("secretOrKey");
+console.log(secretOrKey)
 exports.addTelegramCredentials = async (req, res) => {
   const { name, familyName, TelegramID, telegramAuthDate } = req.body;
   try {
