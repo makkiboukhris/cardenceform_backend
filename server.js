@@ -3,7 +3,6 @@ const dbConnect = require('./config/dbConnect');
 const router = require('./routes/users');
 const dotenv = require('dotenv')
 const app = express();
-app.use(express.json());
 
 // Load env vars
 dotenv.config({ path: "./config/config.env" });
