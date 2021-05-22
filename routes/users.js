@@ -3,6 +3,7 @@ const { addTelegramCredentials, saveData } = require("../controllers/user.contro
 const Router = express.Router();
 const isAuth = require("../middleware/passport-setup");
 
+console.log('working');
 Router.post("/telegramCred", addTelegramCredentials);
 
 Router.get("/information", isAuth(), (req, res) => {
