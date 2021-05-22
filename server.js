@@ -7,7 +7,7 @@ app.use(express.json());
 
 // Load env vars
 dotenv.config({ path: "./config/config.env" });
-
+console.log(process.env)
 // connect to db
 dbConnect();
 
